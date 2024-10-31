@@ -41,13 +41,13 @@ function encrypt(password) {
 function decrypt(encrypted) {
   try {
     if (!encryptionKey || encryptionKey === "") {
-      console.warn('No encryption key, encrypted data will not be decrypted');
+       logError('Error in encrypt no encryption key data will not be encrypted')
       return encrypted;
     }
 
     // Validate the encrypted object structure
     if (!encrypted || !encrypted.iv || !encrypted.encryptedData) {
-      console.warn('Invalid encrypted data format');
+       logError('Error in decrypt not valid data')
       return null;
     }
 
@@ -64,7 +64,7 @@ function decrypt(encrypted) {
 
     return decrypted;
   } catch (error) {
-    console.error('Error in decrypt:', error);
+    logError('Error in decrypt', error)
     return null;
   }
 }
